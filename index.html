@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends Quiz</title>
+</head>
+
+<body>
+    <main>
+        <h1>Frieds Quiz</h1>
+        <div id="container">
+
+        </div>
+        <template id="startComponent">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At ipsam soluta vero dicta dolor doloribus
+                totam labore quas, quae eius aut error consequatur illum incidunt, aliquam sapiente autem atque
+                fuga.
+            </p>
+            <button id="btnStart" type="button">Start</button>
+        </template>
+        <template id="questionComponent">
+            <h2 id="question">Question</h2>
+            <ul id="answerList">
+
+            </ul>
+            <button id="btnNext" type="button">Next</button>
+        </template>
+
+        <template id="answerComponent">
+            <li>
+                <label>
+                    <input type="radio" name="answer" value="" class="answer"><span class="answerText"></span>
+                </label>
+            </li>
+        </template>
+
+        <template id="scoreComponent">
+            <p>You score is: <span></span>
+            </p>
+            <button id="btnRestart" type="button">Restart</button>
+        </template>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
