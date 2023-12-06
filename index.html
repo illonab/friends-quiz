@@ -5,41 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Friends Quiz</title>
+    <link rel="stylesheet" href="build/css/style.css">
 </head>
 
-<body>
-    <main>
-        <h1>Frieds Quiz</h1>
+<body class="">
+    <main class="flex flex-col justify-center   h-screen">
+        <h1 class="mb-8 text-2xl font-bold  text-center">Frieds Quiz</h1>
         <div id="container">
 
         </div>
+
         <template id="startComponent">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At ipsam soluta vero dicta dolor doloribus
-                totam labore quas, quae eius aut error consequatur illum incidunt, aliquam sapiente autem atque
-                fuga.
-            </p>
-            <button id="btnStart" type="button">Start</button>
+            <div class="flex flex-col justify-center items-center ">
+                <p class="text-xl text-center my-[4rem]">Lorem ipsum, dolor sit amet consectetur
+                    adipisicing elit. At ipsam soluta vero dicta dolor
+                    doloribus
+                    totam labore quas, quae eius aut error consequatur illum incidunt, aliquam sapiente autem atque
+                    fuga.
+                </p>
+                <button id="btnStart" type="button"
+                    class=" md:mx-0 bg-purple-400 hover:bg-purple-700 hover:transition-colors duration-500 ease-linear text-white p-3 w-48 rounded-full">Start</button>
+            </div>
         </template>
         <template id="questionComponent">
-            <h2 id="question">Question</h2>
-            <ul id="answerList">
+            <div class="flex flex-col items-center ">
+                <h2 id="question" class="text-xl text-center my-[4rem]">Question</h2>
+                <ul id="answerList" class="text-xl text-left my-[4rem]">
 
-            </ul>
-            <button id="btnNext" type="button">Next</button>
+                </ul>
+                <button id="btnNext" type="button"
+                    class=" md:mx-0 bg-purple-400 hover:bg-purple-700 hover:transition-colors duration-500 ease-linear text-white p-3 w-48 rounded-full">Next</button>
+            </div>
         </template>
 
         <template id="answerComponent">
-            <li>
-                <label>
-                    <input type="radio" name="answer" value="" class="answer"><span class="answerText"></span>
-                </label>
-            </li>
+            <div class="flex flex-col justify-center ">
+                <li>
+                    <label>
+                        <input type="radio" name="answer" value="" class="answer mb-3 p-3"><span
+                            class="answerText"></span>
+                    </label>
+                </li>
+            </div>
         </template>
 
         <template id="scoreComponent">
-            <p>You score is: <span></span>
-            </p>
-            <button id="btnRestart" type="button">Restart</button>
+            <div class="flex flex-col justify-center items-center ">
+                <p>You score is: <span></span>
+                </p>
+                <button id="btnRestart" type="button">Restart</button>
+            </div>
         </template>
     </main>
     <script src="index.js"></script>
