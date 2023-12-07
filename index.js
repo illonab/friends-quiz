@@ -10,6 +10,7 @@ const questions = [
     question: "Who got stuck in a pair of leather pants?",
     answer: ["Chandler", "Ross", "Joey", "Monica"],
     correctAnswer: "Ross",
+    gif: "assets/images/1.gif",
   },
   {
     question: "What was the name of Joey's character on 'Days of Our Lives'?",
@@ -20,6 +21,7 @@ const questions = [
       "Gunther",
     ],
     correctAnswer: "Dr. Drake Ramoray",
+    gif: "assets/images/2.gif",
   } /*
   {
     question:
@@ -74,6 +76,29 @@ const onStart = () => {
   const btnStart = document.querySelector("#btnStart");
 
   btnStart.addEventListener("click", () => {
+    renderQuestionCheck(questions[questionIndex]);
+  });
+};
+
+const renderQuestionCheck = (questionByIndex) => {
+  container.innerHTML = "";
+  const clone = checkComponent.content.cloneNode(true);
+  container.append(clone);
+  const question = document.querySelector("#question");
+  question.innerText = questionByIndex.question;
+  const answerList = document.querySelector("#answerList");
+
+  for (let answer of questionByIndex.answer) {
+    const cloneAnswer = answerComponent.content.cloneNode(true);
+    const answerField = cloneAnswer.querySelector(".answer");
+    answerField.setAttribute("value", answer);
+    const answerText = cloneAnswer.querySelector(".answerText");
+    answerText.innerText = answer;
+    answerList.append(cloneAnswer);
+  }
+
+  const btnCheck = document.querySelector("#btnCheck");
+  btnCheck.addEventListener("click", () => {
     renderQuestion(questions[questionIndex]);
   });
 };
@@ -94,6 +119,9 @@ const renderQuestion = (questionByIndex) => {
     answerText.innerText = answer;
     answerList.append(cloneAnswer);
   }
+
+  const gif = document.querySelector("#gif");
+  gif.setAttribute("src", questionByIndex.gif);
 
   const btnNext = document.querySelector("#btnNext");
   btnNext.addEventListener("click", () => {
@@ -117,7 +145,7 @@ const onNext = () => {
 
     questionIndex++;
     if (questionIndex < questions.length) {
-      renderQuestion(questions[questionIndex]);
+      renderQuestionCheck(questions[questionIndex]);
     } else {
       container.innerHTML = "";
       const clone = scoreComponent.content.cloneNode(true);
@@ -139,6 +167,21 @@ const onRestart = () => {
     questionIndex = 0;
     onStart();
   });
+};
+
+const onCheck = () => {
+  const selectedAnswer = document.querySelector("input[name='answer']:checked");
+  //console.log(selectedAnswer);
+  if (selectedAnswer) {
+    // console.log(selectedAnswer.value);
+    //console.log(questions[questionIndex].correctAnswer);
+    //console.log(questions[questionIndex]);
+    if (selectedAnswer.value === questions[questionIndex].correctAnswer) {
+      score++;
+    }
+  } else {
+    alert("Please select one of the optionce");
+  }
 };
 
 onStart();
