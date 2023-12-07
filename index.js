@@ -20,7 +20,7 @@ const questions = [
       "Gunther",
     ],
     correctAnswer: "Dr. Drake Ramoray",
-  },
+  } /*
   {
     question:
       "What is the name of Phoebe's alter ego, the street performer with a guitar?",
@@ -63,7 +63,7 @@ const questions = [
       "What does Ross famously scream when trying to help move his new couch up the stairs?",
     answer: ["Upward!", "Turn!", "Push!", "Pivot!"],
     correctAnswer: "Pivot!",
-  },
+  },*/,
 ];
 
 const onStart = () => {
@@ -102,28 +102,43 @@ const renderQuestion = (questionByIndex) => {
 };
 
 const onNext = () => {
-  console.log("clicked here");
+  //console.log("clicked here");
   // const answerField = document.querySelector(".answer");
   // console.log(answerField);
   const selectedAnswer = document.querySelector("input[name='answer']:checked");
-  console.log(selectedAnswer);
+  //console.log(selectedAnswer);
   if (selectedAnswer) {
     // console.log(selectedAnswer.value);
     //console.log(questions[questionIndex].correctAnswer);
     //console.log(questions[questionIndex]);
     if (selectedAnswer.value === questions[questionIndex].correctAnswer) {
       score++;
-      questionIndex++;
+    }
+
+    questionIndex++;
+    if (questionIndex < questions.length) {
       renderQuestion(questions[questionIndex]);
-      console.log(score);
     } else {
-      console.log(score);
-      questionIndex++;
-      renderQuestion(questions[questionIndex]);
+      container.innerHTML = "";
+      const clone = scoreComponent.content.cloneNode(true);
+      container.append(clone);
+      const scoreText = document.querySelector(".scoreText");
+      scoreText.innerText = score;
+
+      onRestart();
     }
   } else {
     alert("Please select one of the optionce");
   }
+};
+
+const onRestart = () => {
+  const btnRestart = document.querySelector("#btnRestart");
+  btnRestart.addEventListener("click", () => {
+    score = 0;
+    questionIndex = 0;
+    onStart();
+  });
 };
 
 onStart();
