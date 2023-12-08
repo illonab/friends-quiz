@@ -74,8 +74,7 @@ const questions = [
     gif: "assets/gifs/7.gif",
   },
   {
-    question:
-      "What does Ross famously scream when trying to help move his new couch up the stairs?",
+    question: "What does Ross scream while moving his new couch upstairs?",
     answer: ["Upward!", "Turn!", "Push!", "Pivot!"],
     correctAnswer: "Pivot!",
     gif: "assets/gifs/8.gif",
@@ -88,11 +87,10 @@ const questions = [
     gif: "assets/gifs/9.gif",
   },
   {
-    question:
-      "What is the term 'Unagi' according to Ross, and why does he believe it's crucial for personal safety?",
+    question: "According to Ross, what does the term 'Unagi' mean?",
     answer: [
       "A type of sushi roll",
-      "Martial arts training",
+      "Meditation practice",
       "Self-defense technique",
       "A state of total awareness",
     ],
@@ -131,7 +129,6 @@ const renderQuestionCheck = (questionByIndex) => {
   }
 
   const btnCheck = document.querySelector("#btnCheck");
-  //const btnNext = document.querySelector("#btnNext");
 
   btnCheck.addEventListener("click", () => {
     const selectedAnswer = document.querySelector(
@@ -174,7 +171,7 @@ const onNext = () => {
     const scoreText = document.querySelector(".scoreText");
     scoreText.innerText = score;
     const gif = document.querySelector("#gif");
-    if (score > 8) {
+    if (score >= 8) {
       gif.setAttribute("src", scoreGifs[0].winner1);
     } else if (score >= 5 && score < 8) {
       gif.setAttribute("src", scoreGifs[1].winner2);
